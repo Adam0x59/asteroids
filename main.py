@@ -5,6 +5,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+import sys
 
 def main():
 
@@ -35,6 +36,11 @@ def main():
 		updatable.update(dt)
 		for member in drawable:
 			member.draw(screen)
+		for asteroid in asteroids:
+			if asteroid.circ_collision_check(player):
+				print("Game over!")
+				sys.exit(0)
+
 		# player.draw(screen)
 		# player.update(dt)
 		# player.move(dt)
